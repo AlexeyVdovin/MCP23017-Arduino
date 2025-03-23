@@ -41,6 +41,16 @@ class MCP_23017 : public MCP23017, public EasyC
     {
     }
 
+    MCP_23017(uint8_t addr) : MCP23017(addr, Wire) // EasyC / hardware I2C
+    {
+    }
+    
+    void begin(int sda, int scl)
+    {
+        Wire.begin(sda, scl);
+        init();
+    }
+
     void begin()
     {
         Wire.begin();
